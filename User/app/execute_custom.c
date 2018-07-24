@@ -13,22 +13,22 @@ pid_t pid_football_angle[4]  = { 0 };
 
 void football_motor_init() {
     for (int i = 0; i < 4; ++i) {
-			  // ÕâÁ½¸öpid¶¼»¹ÓÐµ÷ÕûµÄ¿Õ¼ä£¬Ö»ÊÇÍµ¸öÀÁ
-				pid_init(&pid_football_speed[i], 7000, 0, 10, 0, 0);
-			  pid_init(&pid_football_angle[i], 7000, 0, 100, 0, 0);
-	  }
+        // è¿™ä¸¤ä¸ªpidéƒ½è¿˜æœ‰è°ƒæ•´çš„ç©ºé—´ï¼Œåªæ˜¯å·ä¸ªæ‡’
+        pid_init(&pid_football_speed[i], 7000, 0, 10, 0, 0);
+        pid_init(&pid_football_angle[i], 7000, 0, 100, 0, 0);
+    }
 }
 
 void football_motor_control() {
-    football_moto_angle[0] = -rc.ch1 / RC_MAX_VALUE * 160;		// ·ÇÊØÃÅÔ±
-	  //football_moto_angle[0] = -rc.ch1 / RC_MAX_VALUE * 260;	// ÊØÃÅÔ±
+    football_moto_angle[0] = -rc.ch1 / RC_MAX_VALUE * 160;		// éžå®ˆé—¨å‘˜
+    //football_moto_angle[0] = -rc.ch1 / RC_MAX_VALUE * 260;	// å®ˆé—¨å‘˜
     football_moto_angle[1] = -(rc.ch2 / RC_MAX_VALUE * 90);
-		football_moto_angle[2] = -rc.ch3 / RC_MAX_VALUE * 160;
-		football_moto_angle[3] = -(rc.ch4 / RC_MAX_VALUE * 90);
+    football_moto_angle[2] = -rc.ch3 / RC_MAX_VALUE * 160;
+    football_moto_angle[3] = -(rc.ch4 / RC_MAX_VALUE * 90);
 	
-		for (int i = 0; i < 4; ++i) {
-			  // ½Ç¶ÈpidµÄÊä³öÁ¿×÷ÎªËÙ¶ÈpidµÄÊäÈëÁ¿£¬ÓÉÓÚµç»ú¼õËÙ±È£¬¶Ôtotal_angle³ý19.2
-				football_moto_speed[i] = pid_calc(&pid_football_angle[i], moto_chassis[i].total_angle/19.2, football_moto_angle[i]);
-				football_moto_current[i] = pid_calc(&pid_football_speed[i], moto_chassis[i].speed_rpm, football_moto_speed[i]);
-		}			
+    for (int i = 0; i < 4; ++i) {
+        // è§’åº¦pidçš„è¾“å‡ºé‡ä½œä¸ºé€Ÿåº¦pidçš„è¾“å…¥é‡ï¼Œç”±äºŽç”µæœºå‡é€Ÿæ¯”ï¼Œå¯¹total_angleé™¤19.2
+        football_moto_speed[i] = pid_calc(&pid_football_angle[i], moto_chassis[i].total_angle/19.2, football_moto_angle[i]);
+        football_moto_current[i] = pid_calc(&pid_football_speed[i], moto_chassis[i].speed_rpm, football_moto_speed[i]);
+    }			
 }
