@@ -8,16 +8,16 @@
 
 void execute_task(const void* argu)
 {
-	  // µç»úpid³õÊ¼»¯
+    // ç”µæœºpidåˆå§‹åŒ–
     football_motor_init();
 
     while(1) {
-			  // µç»ú¿ØÖÆ
-				football_motor_control();
+        // ç”µæœºæ§åˆ¶
+        football_motor_control();
 			
-			  // Ê¹ÓÃµ×ÅÌµç»úµÄº¯Êı·¢ËÍµçÁ÷Öµ
-				send_chassis_moto_current(football_moto_current);
+        // ä½¿ç”¨åº•ç›˜ç”µæœºçš„å‡½æ•°å‘é€ç”µæµå€¼
+        send_chassis_moto_current(football_moto_current);
 			
-				osDelay(5);
+        osDelay(5);
     }
 }
