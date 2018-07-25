@@ -13,17 +13,10 @@ pid_t pid_football_angle[4]  = { 0 };
 
 void football_motor_init() {
     for (int i = 0; i < 4; ++i) {
-<<<<<<< HEAD
-			  // 这两个pid都还有调整的空间，只是偷个懒
-				pid_init(&pid_football_speed[i], 300, 0, 10, 0, 0);
-			  pid_init(&pid_football_angle[i], 7000, 0, 100, 0, 0);
-	  }
-=======
         // 杩欎袱涓猵id閮借繕鏈夎皟鏁寸殑绌洪棿锛屽彧鏄伔涓噿
         pid_init(&pid_football_speed[i], 300, 0, 10, 0, 0);
         pid_init(&pid_football_angle[i], 7000, 0, 100, 0, 0);
     }
->>>>>>> 9579fc93fd04298cd74b0f5a9d3001d3e51599bf
 }
 
 void football_motor_control() {
