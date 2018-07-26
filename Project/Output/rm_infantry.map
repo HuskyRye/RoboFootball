@@ -4170,8 +4170,8 @@ Image component sizes
         16          4          0          0         11       1253   calibrate.o
        648         38          0         40        480      10813   can_device.o
         40          4          0          0         86       1638   detect_task.o
-       488         68          0         16        432       2189   execute_custom.o
-        28          4          0          0          0        535   execute_task.o
+       488         68          0         16        432       2185   execute_custom.o
+        28          4          0          0          0        539   execute_task.o
          0          0          0          0          0        858   gimbal_task.o
        238          0          0          0          0       2778   pid.o
        196         28         28          0          0      19200   startup.o
